@@ -1,0 +1,22 @@
+<div align="center" class="wrapper">
+    <div class="formWrapper">
+    <h1>Добавить новую задачу</h1>
+        <form [formGroup]="taskForm">
+            <p><b>Название задачи:</b></p>
+            <p><textarea  formControlName="taskHeader" rows="1" cols="50" ></textarea></p>
+            <p><b>Описание задачи:</b></p>
+            <p><textarea formControlName="taskText" rows="15" cols="50" ></textarea></p> 
+            <p><b>Статус задачи:</b></p>  
+            <p>
+              <select formControlName="taskStatus">
+                <option value="Не выполнено">Не выполнено</option>
+                <option value="Выполнено">Выполнено</option>
+              </select>
+            </p>     
+        </form>
+        <button (click)="saveTask()">Сохранить</button>
+        <button routerLink="/task" >закрыть</button>
+    </div>
+<div>
+
+<br/>

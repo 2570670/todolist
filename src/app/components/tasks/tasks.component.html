@@ -1,0 +1,44 @@
+<div class = "wrapper">
+    <div class = "taskList">
+        <!--выбор задач-->
+       
+       <div  class = "taskGroupsBtnWrapper">
+        <button (click)="changeTaskCategory(null)" class = "taskGroupBtn">Все задачи</button>
+        <button (click)="changeTaskCategory('Не выполнено')" class = "taskGroupBtn">Предстоящие задачи</button>
+        <button (click)="changeTaskCategory('Выполнено')" class = "taskGroupBtn">Выполненные задачи</button>
+        
+        <button routerLink="/task/new" class = "taskGroupBtn">Добавить задачу</button>
+       </div>
+
+       <!--задачи-->
+       <div class="taskCardWrap">
+        <div *ngFor="let task of tasks" class="taskCard">
+            <h4 class="hStatus">СТАТУС : {{task.Status}}</h4>
+            
+                <div class="taskDescription">
+                    <h4>{{task.Header}}</h4>
+                    <p>{{task.Text}}</p>
+                </div>
+                <div style="display: flex; justify-content:space-between; flex-wrap: wrap; align-items: center">
+                    <div>
+                        <button (click)="deleteTask(task.ID)" class="taskActionBtn">Удалить</button>
+                        <button (click)=" showEditTask(task.ID)" class="taskActionBtn">Редактировать</button>
+                        </div>
+                    
+                    <div style="display: inline-flex; align-items: center">
+                        <div>
+                            <span class="taskActionBtn, taskActionText">Установить статус:</span>
+                            <button (click)="changeTaskStatus(task.ID, task.Status)" class="taskActionBtn">{{task.Status == 'Выполнено' ? 'Не выполнено' : 'Выполнено' }}</button>
+                        </div> 
+                    </div>
+                </div>   
+            
+            
+           </div>
+        </div>
+      
+       
+    </div>
+    <div  class = "taskEditor"><router-outlet style="position: fixed;"></router-outlet></div>
+</div>
+
